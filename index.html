@@ -311,8 +311,7 @@
   </div>
 
   <script>
-    // 👇 यहाँ Google Apps Script का Web App URL लगेगा 👇
-    const SCRIPT_URL = "YOUR_WEB_APP_URL_HERE";
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx7GtRmirbFszMdcJh9UfTDuuI0DJcyRXitd6nWgaaWULijnBYdm78XRDNSy65PJmoqGQ/exec";
 
     // Role Selection UI
     document.querySelectorAll('.role-option').forEach(opt => {
@@ -361,11 +360,6 @@
 
       if (!/^[6-9]\d{9}$/.test(mobile)) {
         showStatus(msg, "err", "⚠️ कृपया सही 10 अंकों का मोबाइल नंबर डालें।");
-        return;
-      }
-
-      if (SCRIPT_URL === "YOUR_WEB_APP_URL_HERE") {
-        showStatus(msg, "err", "⚠️ अभी Google Sheet लिंक सेट नहीं किया गया है।");
         return;
       }
 
@@ -511,11 +505,6 @@
     async function loadGallery() {
       const list = document.getElementById('galleryList');
       const isAdminOpen = !document.getElementById('adminPanel').classList.contains('hidden');
-
-      if (SCRIPT_URL === "YOUR_WEB_APP_URL_HERE") {
-        list.innerHTML = '<p style="text-align:center; color:#64748b; padding:20px;">Google Sheet लिंक जुड़ने के बाद यहाँ फोटो दिखेंगी।</p>';
-        return;
-      }
 
       try {
         const res = await fetch(SCRIPT_URL);
